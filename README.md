@@ -1,5 +1,12 @@
 # FastAPI
-Applying one of the official documantations examples 
+Applying one of the official documantations examples.
+
+## Installation process
+install the dependencies using the following command:
+
+pip install -r requirements.txt
+
+## Running the app
 After installing requirements.txt run the server using the following command: 
 
 

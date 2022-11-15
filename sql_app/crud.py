@@ -34,3 +34,13 @@ def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
     db.commit()
     db.refresh(db_item)
     return db_item
+
+def create_service(db: Session, service: schemas.ServiceCreate):
+    db_serive = models.Services(**service.dict())
+    db.add(db_serive)
+    db.commit()
+    db.refresh(db_serive)
+    return db_serive
+
+def get_services(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Services).offset(skip).limit(limit).all()

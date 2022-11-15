@@ -38,6 +38,15 @@ def create_user_item(user_id: int, item:schemas.ItemCreate, db: Session = Depend
 def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     items = crud.get_items(db, skip=skip, limit=limit)
     return items
+
+@app.post("/services/", response_model=schemas.Service)
+def create_service(service:schemas.ServiceCreate, db: Session = Depends(get_db)):
+    return crud.create_service(db=db, service=service)
+
+@app.get("/serivces/", response_model=List[schemas.Service])
+def get_services(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    items = crud.get_services(db, skip=skip, limit=limit)
+    return items
 # MONGO_DETAILS = "mongodb+srv://ghalia:826555666@fasterapi.brzllhb.mongodb.net/?retryWrites=true&w=majority"
 # client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DETAILS)
 
